@@ -1,0 +1,14 @@
+# YOLO training outputs
+runs/
+
+# Model weights
+*.pt
+*.onnx
+*.engine
+
+# Large datasets
+datasets/
+
+# IDE
+.vscode/
+.idea/
