@@ -1,0 +1,8 @@
+# Template dataset YOLO.
+# Kalau kamu mengunduh dataset dari Roboflow, file ini akan ditimpa otomatis.
+path: dataset
+train: images/train
+val: images/val
+
+names:
+  0: person

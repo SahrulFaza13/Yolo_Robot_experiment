@@ -1,0 +1,46 @@
+[project]
+name = "robot"
+version = "0.1.0"
+description = "Pengenalan objek YOLO + kontrol pergerakan robot via USB Serial"
+requires-python = ">=3.11"
+dependencies = [
+    "ultralytics>=8.3.0",
+    "opencv-python>=4.10.0",
+    "pyserial>=3.5",
+    "numpy>=1.26.0",
+    "pyyaml>=6.0",
+]
+
+# CATATAN: 'roboflow' sengaja TIDAK dipasang di sini.
+# roboflow menarik 'opencv-python-headless' yang menimpa cv2 versi GUI,
+# sehingga cv2.imshow() gagal. Pakai sekali jalan kalau perlu:
+#   uv run --with roboflow python scripts/download_dataset.py ...
+[dependency-groups]
+dev = [
+    "jupyterlab>=4.2.0",
+    "ipykernel>=6.29.0",
+    "ipywidgets>=8.1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["robot"]
+
+# ---------------------------------------------------------------------------
+# PyTorch memakai wheel CPU dari PyPI (cepat dipasang, ~200 MB).
+# Untuk dataset kecil (50-3000 gambar) CPU sudah cukup.
+#
+# Kalau nanti butuh GPU (RTX 3050), aktifkan blok di bawah lalu `uv sync`:
+#
+# [tool.uv.sources]
+# torch = { index = "pytorch" }
+# torchvision = { index = "pytorch" }
+#
+# [[tool.uv.index]]
+# name = "pytorch"
+# url = "https://download.pytorch.org/whl/cu126"
+# explicit = true
+# ---------------------------------------------------------------------------

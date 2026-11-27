@@ -1,0 +1,6 @@
+path: D:\SEMESTER 7\Robotika\Robot\dataset\person
+train: images/train
+val: images/val
+
+names:
+  0: person
